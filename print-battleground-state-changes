@@ -103,9 +103,9 @@ def html_write_state_head(state: str):
     return f'''
         <thead class="thead-light">
         <tr>
-            <th class="text-center" colspan="9" data-toggle="collapse" data-target="#collapse{state}>{state}</th>
+            <th class="text-center" colspan="9" data-toggle="collapse" data-target="#collapse{state}">{state}</th>
         </tr>
-        <tr>
+        <tr id="collapse{state}">
             <th class="has-tip" data-toggle="tooltip" title="When did this block of votes get reported?">Timestamp</th>
             <th class="has-tip" data-toggle="tooltip" title="Which candidate currently leads this state?">In The Lead</th>
             <th class="has-tip" data-toggle="tooltip" title="How many votes separate the two candidates?">Vote Differential</th>
@@ -127,7 +127,7 @@ def html_write_state_head(state: str):
 
 def html_summary(summary: IterationSummary):
     html = f'''
-        <tr id="collapse{state}>
+        <tr id="collapse{state}">
             <td class="timestamp">{summary.timestamp.strftime('%Y-%m-%d %H:%M:%S')} UTC</td>
             <td class="{summary.leading_candidate_name}">{summary.leading_candidate_name}</td>
             <td>{summary.vote_differential:,}</td>
